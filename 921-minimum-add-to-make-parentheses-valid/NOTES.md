@@ -1,28 +1,37 @@
+```
+class Solution {
+public:
+int minAddToMakeValid(string s) {
+stack<char> st;
 int count=0;
-for(int i=0;i<n;i++)
+for(int i=0;i<s.size();i++)
 {
-if(s[i]=='(' && s[i+1]==')')
-i=i+1;
+if(s[i]==')')
+{
+if(st.empty())
+count++;
+else if(st.top()=='(')
+st.pop();
 else
 st.push(s[i]);
 }
-return st.size();
+else if(s[i]=='(')
+st.push(s[i]);
 }
-// 3rd wrong approach -
+return st.size()+count;
+}
+};
+​
+/*
+// Iterative Approach -
 int n=s.size();
-stack<char>st1;
-stack<char>st2;
-int count=0;
-for(int i=0;i<n;i++)
+int res=0;
+int balance=0;
+for (int i = 0; i < n; i++)
 {
-if(s[i]=='(' && st2.size()==0)
-st1.push(s[i]);
-else if(s[i]==')' && st1.size()==0)
-st2.push(s[i]);
-else
-st1.pop();
+balance+=s[i]=='(' ? 1 : -1;
+if(balance==-1)
+{
+res++;
+balance++;
 }
-return st2.size();
-​
-​
-*/
