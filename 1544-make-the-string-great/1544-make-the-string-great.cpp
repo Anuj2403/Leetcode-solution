@@ -19,9 +19,25 @@ public:
 	
         while(!st.empty())
         {
+            ans+=st.top();
+            st.pop();
+        }
+        reverse(ans.begin(),ans.end());
+        return ans;
+    }
+};
+//Reference -->https://leetcode.com/problems/make-the-string-great/discuss/781103/C%2B%2B-Using-a-Stack-O(n)-(with-detailed-explanations)
+
+/*
+
+//we can also do like this -
+
+        while(!st.empty())
+        {
             ans=st.top()+ans;
             st.pop();
         }
         return ans;
-    }
-};
+
+
+*/
